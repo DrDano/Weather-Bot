@@ -80,6 +80,19 @@ var formSubmitHandler = function(event) {
 
     container.innerHTML = cityDateIconString;
     tempContainer.textContent = weatherData.current.temp + "F"
+    windContainer.textContent = weatherData.current.wind_speed + "mph"
+    humidityContainer.textContent = weatherData.current.humidity + "%"
+    uvIndexContainer.textContent = weatherData.current.uvi
+
+    if (weatherData.current.uvi < 3) {
+        uvIndexContainer.className = "bg-green-400 box-border h-12 max-w-20px"
+    } else if (weatherData.current.uvi > 3 && weatherData.current.uvi < 6) {
+        uvIndexContainer.className = "bg-orange-400 box-border h-12 max-w-20px"
+    } else if (weatherData.current.uvi > 6 && weatherData.current.uvi < 8) {
+        uvIndexContainer.className = "bg-red-400 box-border h-12 max-w-20px"
+    } else {
+        uvIndexContainer.className = "bg-red-700 box-border h-12 max-w-20px"
+    }
     
   }
 
