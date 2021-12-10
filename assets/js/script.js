@@ -109,19 +109,31 @@ var formSubmitHandler = function(event) {
             month: 'numeric',
             year: 'numeric'
         });
-          var iconAddress = dayWeather.weather[0].icon
+          var iconCode = dayWeather.weather[0].icon
           var temp = dayWeather.temp.day
           var wind = dayWeather.wind_speed
           var humidity = dayWeather.humidity
+          var iconAddress = `http://openweathermap.org/img/wn/${iconCode}@2x.png`
+
+          var IconString = `<div id="forc-icon-${i}"><img src="${iconAddress}" class="object-scale-down"></img></div>`;
 
           var dataArr = [forcDate, iconAddress, humidity, wind, temp]
           var dataStrArr = ["Date: ","icon","Humidity: ", "Wind: ", "Temp: "]
 
+        //   This first loop fills all 5 forecast elements with the date and icon
           var dayChildren = dayEl.children
-          for (let i = 0; i < 2; i++) {
-              dayChildren[i].textContent = dataArr[i]
-          }
+          dayChildren[0].textContent = forcDate;
+          dayChildren[1].innerHTML = IconString;
 
+          function deleteChildNodes(parent) {
+            while (parent.firstChild) {
+                parent.removeChild(parent.firstChild);
+            }
+        }
+
+        deleteChildNodes(dayChildren[2])
+
+        //   This second loop fills the elements with weather data list items
           for (let i = 4; i > 1; i--) {
               var newLi = document.createElement("li")
               newLi.textContent = `${dataStrArr[i]}${dataArr[i]}`
