@@ -1,5 +1,10 @@
 var locationForm = document.querySelector("#location-form")
 var locationInput = document.querySelector("#location-input")
+var date = new Date().toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric'
+});
 
 var formSubmitHandler = function(event) {
     event.preventDefault();
@@ -71,12 +76,6 @@ var formSubmitHandler = function(event) {
     var iconCode = weatherData.current.weather[0].icon
     var iconAddress = `http://openweathermap.org/img/wn/${iconCode}@2x.png`
 
-    var date = new Date().toLocaleDateString('en-US', {
-        day: 'numeric',
-        month: 'numeric',
-        year: 'numeric'
-    });
-
     var cityDateIconString = `<h3 id="city-date-icon" class="grid grid-rows-1">${locationInput.value} (${date})<img src="${iconAddress}" class="object-scale-down"></img></h3>`;
 
     container.innerHTML = cityDateIconString;
@@ -98,9 +97,33 @@ var formSubmitHandler = function(event) {
   }
 
   displayForecast = function(weatherData) {
-      var container = document.querySelector("#forc-grid");
-
+      var containerChildren = document.querySelector("#forc-grid").children;
+      var weatherDayArr = weatherData.daily
       
+      for (let i = 0; i < containerChildren.length; i++) {
+          var dayWeather = weatherDayArr[i]
+          var dayEl = containerChildren[i]
+          var d = new Date(dayWeather.dt * 1000);
+          var forcDate = d.toLocaleDateString('en-US', {
+            day: 'numeric',
+            month: 'numeric',
+            year: 'numeric'
+        });
+          var iconAddress = dayWeather.weather[0].icon
+          var temp = dayWeather.temp.day
+          var wind = dayWeather.wind_speed
+          var humidity = dayWeather.humidity
+
+          var dataArr = [forcDate, iconAddress, temp, wind, humidity]
+
+          var dayChildren = dayEl.children
+          for (let i = 0; i < dayChildren.length; i++) {
+              dayChildren[i].textContent = dataArr[i]
+              
+          }
+      }
+
+
   }
 
 
