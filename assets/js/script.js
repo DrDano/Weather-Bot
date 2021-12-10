@@ -39,3 +39,27 @@ var formSubmitHandler = function(event) {
       alert("Unable to connect to Geocoding API");
     });
   }
+
+  var getWeatherData = function(coordinates) {
+      var lat = coordinates[0].lat;
+      var long = coordinates[0].lon;
+      var part = "minutely,hourly";
+      var apiKey = "15bbf77d97c1faec8173196d7f04e456"
+      openWeatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=${part}&units=imperial&appid=15bbf77d97c1faec8173196d7f04e456`
+
+      fetch(openWeatherUrl).then(function(response) {
+          if(response.ok) {
+              response.json().then(function(data) {
+                  console.log(data);
+
+              });
+          } else {
+              alert('Error: Weather data unable to be fetched due to server problem')
+          }
+      })
+      .catch(function(error) {
+          console.log("Unable to connect with weather server")
+      });
+  }
+
+  locationForm.addEventListener("submit", formSubmitHandler);
