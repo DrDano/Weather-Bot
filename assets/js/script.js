@@ -79,6 +79,8 @@ var formSubmitHandler = function(event) {
     var cityDateIconString = `<div id="city-date-icon" class="grid grid-rows-1">${locationInput.value} (${date})<img src="${iconAddress}" class="object-scale-down"></img></div>`;
 
     container.innerHTML = cityDateIconString;
+    tempContainer.textContent = weatherData.current.temp + "F"
+    
   }
 
 
