@@ -51,6 +51,7 @@ var formSubmitHandler = function(event) {
               response.json().then(function(data) {
                   console.log(data)
                   displayWeather(data);
+                  displayForecast(data);
               });
           } else {
               alert('Error: Weather data unable to be fetched due to server problem')
@@ -76,7 +77,7 @@ var formSubmitHandler = function(event) {
         year: 'numeric'
     });
 
-    var cityDateIconString = `<div id="city-date-icon" class="grid grid-rows-1">${locationInput.value} (${date})<img src="${iconAddress}" class="object-scale-down"></img></div>`;
+    var cityDateIconString = `<h3 id="city-date-icon" class="grid grid-rows-1">${locationInput.value} (${date})<img src="${iconAddress}" class="object-scale-down"></img></h3>`;
 
     container.innerHTML = cityDateIconString;
     tempContainer.textContent = weatherData.current.temp + "F"
@@ -94,6 +95,12 @@ var formSubmitHandler = function(event) {
         uvIndexContainer.className = "bg-red-700 box-border h-12 max-w-20px"
     }
     
+  }
+
+  displayForecast = function(weatherData) {
+      var container = document.querySelector("#forc-grid");
+
+      
   }
 
 
