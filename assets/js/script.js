@@ -114,12 +114,18 @@ var formSubmitHandler = function(event) {
           var wind = dayWeather.wind_speed
           var humidity = dayWeather.humidity
 
-          var dataArr = [forcDate, iconAddress, temp, wind, humidity]
+          var dataArr = [forcDate, iconAddress, humidity, wind, temp]
+          var dataStrArr = ["Date: ","icon","Humidity: ", "Wind: ", "Temp: "]
 
           var dayChildren = dayEl.children
-          for (let i = 0; i < dayChildren.length; i++) {
+          for (let i = 0; i < 2; i++) {
               dayChildren[i].textContent = dataArr[i]
-              
+          }
+
+          for (let i = 4; i > 1; i--) {
+              var newLi = document.createElement("li")
+              newLi.textContent = `${dataStrArr[i]}${dataArr[i]}`
+              dayChildren[2].appendChild(newLi)
           }
       }
 
