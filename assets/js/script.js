@@ -28,7 +28,6 @@ var formSubmitHandler = function(event) {
       // request was retrieved successfully
       if (response.ok) {
         response.json().then(function(data) {
-          console.log(data);
           getWeatherData(data);
         });
       } else {
@@ -45,13 +44,13 @@ var formSubmitHandler = function(event) {
       var long = coordinates[0].lon;
       var part = "minutely,hourly";
       var apiKey = "15bbf77d97c1faec8173196d7f04e456"
-      openWeatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=${part}&units=imperial&appid=15bbf77d97c1faec8173196d7f04e456`
+      openWeatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=${part}&units=imperial&appid=${apiKey}`
 
       fetch(openWeatherUrl).then(function(response) {
           if(response.ok) {
               response.json().then(function(data) {
-                  console.log(data);
-
+                  console.log(data)
+                  displayWeather(data);
               });
           } else {
               alert('Error: Weather data unable to be fetched due to server problem')
@@ -61,5 +60,19 @@ var formSubmitHandler = function(event) {
           console.log("Unable to connect with weather server")
       });
   }
+
+  var displayWeather = function(weatherData) {
+    var container = document.querySelector("#city-date-icon")
+    var date = new Date().toLocaleDateString('en-US', {
+        day: 'numeric',
+        month: 'numeric',
+        year: 'numeric'
+    });
+
+    var cityDateIconString = locationInput.value + "(" + date + ")"
+
+    container.textContent = cityDateIconString;
+  }
+
 
   locationForm.addEventListener("submit", formSubmitHandler);
