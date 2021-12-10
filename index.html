@@ -8,64 +8,65 @@
     <title>Weather Bot</title>
 </head>
 <header class="flex-fluid font-sans font-semibold text-7xl">
-    <h1 class="box-border p-4 border-4 border-gray-600 bg-gradient-to-r from-blue-400 via-red-500 to-pink-500 text-center">Weather Bot
+    <h1 class="box-border p-4 border-4 border-gray-600 bg-gradient-to-r from-blue-400 via-red-500 to-pink-500 text-center">Weather Bot 
     </h1>
 </header>
-<body class="box-border font-sans bg-pink-100 grid">
-    <menu class="">
-        <form action="submit">
-            <input type="text" placeholder="Phoenix">
-            <button type="submit" class="bg-purple-300 text-white hover:bg-gray-300 rounded">Search</button>
-        </form>
-        <ul id="search-history-list"></ul>
-    </menu>
-    <main class="">
-        <section id="current-weather-container">
-            <article>
-                <div id="city-date-icon">
-                    <h2 id="city"></h2>
-                    <div id="date"></div>
-                    <div id="icon"></div>
+<body class="box-border font-sans bg-pink-100">
+    <div class="grid grid-cols-2">
+        <menu class="">
+            <form action="submit">
+                <input type="text" placeholder="Phoenix">
+                <button type="submit" class="bg-purple-300 text-white hover:bg-gray-300 rounded">Search</button>
+            </form>
+            <ul id="search-history-list"></ul>
+        </menu>
+        <main class="grid grid-rows-2">
+            <section id="current-weather-container">
+                <article>
+                    <div id="city-date-icon">
+                        <h2 id="city"></h2>
+                        <div id="date"></div>
+                        <div id="icon"></div>
+                    </div>
+                    <div id="temp-div"></div>
+                    <div id="wind-div"></div>
+                    <div id="humidity-div"></div>
+                    <div id="uv-index-div"></div>
+                </article>
+            </section>
+            <section id="forecasted-weather-container" class="grid grid-rows-2">
+                <h3 class="font-semibold text-3xl">5-Day-Forecast</h3>
+                
+                <div id="forc-grid" class="grid grid-cols-5 gap-8 grid-flow-col justify-around">
+                    <div id="day-1" class="bg-blue-900">
+                        <div id="forc-date-1"></div>
+                        <div id="forc-icon-1"></div>
+                        <div id="forc-data-1"></div>
+                    </div>
+                    <div id="day-2" class="bg-blue-900">
+                        <div id="forc-date2"></div>
+                        <div id="forc-icon-2"></div>
+                        <div id="forc-data-2"></div>
+                    </div>
+                    <div id="day-3" class="bg-blue-900">
+                        <div id="forc-date-3"></div>
+                        <div id="forc-icon-3"></div>
+                        <div id="forc-data-3"></div>
+                    </div>
+                    <div id="day-4" class="bg-blue-900">
+                        <div id="forc-date-4"></div>
+                        <div id="forc-icon-4"></div>
+                        <div id="forc-data-4"></div>
+                    </div>
+                    <div id="day-5" class="bg-blue-900">
+                        <div id="forc-date-5"></div>
+                        <div id="forc-icon-5"></div>
+                        <div id="forc-data-5"></div>
+                    </div>
                 </div>
-                <div id="temp-div"></div>
-                <div id="wind-div"></div>
-                <div id="humidity-div"></div>
-                <div id="uv-index-div"></div>
-            </article>
-        </section>
-        <section id="forecasted-weather-container">
-            <h3 class="font-semibold text-3xl">5-Day-Forecast</h3>
-            
-            <div id="forc-grid" class="grid grid-cols-5 gap-24 grid-flow-col">
-                <div id="day-1" class="bg-blue-900">
-                    <div id="forc-date-1"></div>
-                    <div id="forc-icon-1"></div>
-                    <div id="forc-data-1"></div>
-                </div>
-                <div id="day-2" class="bg-blue-900">
-                    <div id="forc-date2"></div>
-                    <div id="forc-icon-2"></div>
-                    <div id="forc-data-2"></div>
-                </div>
-                <div id="day-3" class="bg-blue-900">
-                    <div id="forc-date-3"></div>
-                    <div id="forc-icon-3"></div>
-                    <div id="forc-data-3"></div>
-                </div>
-                <div id="day-4" class="bg-blue-900">
-                    <div id="forc-date-4"></div>
-                    <div id="forc-icon-4"></div>
-                    <div id="forc-data-4"></div>
-                </div>
-                <div id="day-5" class="bg-blue-900">
-                    <div id="forc-date-5"></div>
-                    <div id="forc-icon-5"></div>
-                    <div id="forc-data-5"></div>
-                </div>
-            </div>
-            
-            
-        </section>
-    </main>
+            </section>
+        </main>
+    </div>
+    
 </body>
 </html>
