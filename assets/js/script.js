@@ -62,16 +62,23 @@ var formSubmitHandler = function(event) {
   }
 
   var displayWeather = function(weatherData) {
-    var container = document.querySelector("#city-date-icon")
+    var container = document.querySelector("#city-date-icon");
+    var tempContainer = document.querySelector("#temp-div");
+    var windContainer = document.querySelector("#wind-div");
+    var humidityContainer = document.querySelector("#humidity-div");
+    var uvIndexContainer = document.querySelector("#uv-index-div");
+    var iconCode = weatherData.current.weather[0].icon
+    var iconAddress = `http://openweathermap.org/img/wn/${iconCode}@2x.png`
+
     var date = new Date().toLocaleDateString('en-US', {
         day: 'numeric',
         month: 'numeric',
         year: 'numeric'
     });
 
-    var cityDateIconString = locationInput.value + "(" + date + ")"
+    var cityDateIconString = `<div id="city-date-icon" class="grid grid-rows-1">${locationInput.value} (${date})<img src="${iconAddress}" class="object-scale-down"></img></div>`;
 
-    container.textContent = cityDateIconString;
+    container.innerHTML = cityDateIconString;
   }
 
 
