@@ -5,6 +5,8 @@ var date = new Date().toLocaleDateString('en-US', {
     month: 'numeric',
     year: 'numeric'
 });
+var historyList = document.querySelector("#search-history-list")
+var newDiv = document.createElement("a")
 
 var formSubmitHandler = function(event) {
     event.preventDefault();
@@ -13,8 +15,11 @@ var formSubmitHandler = function(event) {
     // © OpenStreetMap contributors
     var cityURL = `https://forward-reverse-geocoding.p.rapidapi.com/v1/search?q=${location}&accept-language=en&polygon_threshold=0.0`
     if (location) {
+      localStorage.setItem(`${location}`, location);
+      newDiv.textContent = locationInput.value
+      historyList.appendChild(newDiv);
       getLatLong(cityURL);
-  
+
       location.textContent = "";
     } else {
       alert("Please enter a city name");
@@ -96,29 +101,29 @@ var formSubmitHandler = function(event) {
     
   }
 
-  displayForecast = function(weatherData) {
+  var displayForecast = function(weatherData) {
       var containerChildren = document.querySelector("#forc-grid").children;
-      var weatherDayArr = weatherData.daily
+      var weatherDayArr = weatherData.daily;
       
       for (let i = 0; i < containerChildren.length; i++) {
-          var dayWeather = weatherDayArr[i]
-          var dayEl = containerChildren[i]
+          var dayWeather = weatherDayArr[i];
+          var dayEl = containerChildren[i];
           var d = new Date(dayWeather.dt * 1000);
           var forcDate = d.toLocaleDateString('en-US', {
             day: 'numeric',
             month: 'numeric',
             year: 'numeric'
         });
-          var iconCode = dayWeather.weather[0].icon
-          var temp = dayWeather.temp.day
-          var wind = dayWeather.wind_speed
-          var humidity = dayWeather.humidity
-          var iconAddress = `http://openweathermap.org/img/wn/${iconCode}@2x.png`
+          var iconCode = dayWeather.weather[0].icon;
+          var temp = dayWeather.temp.day;
+          var wind = dayWeather.wind_speed;
+          var humidity = dayWeather.humidity;
+          var iconAddress = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
           var IconString = `<div id="forc-icon-${i}"><img src="${iconAddress}" class="object-scale-down"></img></div>`;
 
-          var dataArr = [forcDate, iconAddress, humidity, wind, temp]
-          var dataStrArr = ["Date: ","icon","Humidity: ", "Wind: ", "Temp: "]
+          var dataArr = [forcDate, iconAddress, humidity, wind, temp];
+          var dataStrArr = ["Date: ","icon","Humidity: ", "Wind: ", "Temp: "];
 
         //   This first loop fills all 5 forecast elements with the date and icon
           var dayChildren = dayEl.children
@@ -129,20 +134,31 @@ var formSubmitHandler = function(event) {
             while (parent.firstChild) {
                 parent.removeChild(parent.firstChild);
             }
-        }
+        };
 
         deleteChildNodes(dayChildren[2])
 
         //   This second loop fills the elements with weather data list items
           for (let i = 4; i > 1; i--) {
-              var newLi = document.createElement("li")
-              newLi.textContent = `${dataStrArr[i]}${dataArr[i]}`
-              dayChildren[2].appendChild(newLi)
-          }
-      }
-
-
+              var newLi = document.createElement("li");
+              newLi.textContent = `${dataStrArr[i]}${dataArr[i]}`;
+              dayChildren[2].appendChild(newLi);
+          };
+      };
   }
 
+  var getHistory = function(city) {
 
+    
+      if (localStorage.key(0)) {
+          for (let i = 0; i < localStorage.length; i++) {
+              newDiv.textContent = localStorage.getItem(localStorage.key(i))
+              historyList.appendChild(newDiv);
+          }
+      } else {
+
+      }
+  }
+
+  getHistory();
   locationForm.addEventListener("submit", formSubmitHandler);
