@@ -13,15 +13,15 @@
 </header>
 <body class="box-border font-sans bg-pink-100">
     <div class="grid grid-cols-3">
-        <menu class="grid grid-rows-10">
+        <menu class="box-border grid grid-rows-10">
             <form action="submit" id="location-form" class="row-span-2">
                 <input type="text" placeholder="Phoenix" id="location-input">
                 <button type="submit" class="bg-purple-300 text-white hover:bg-gray-300 rounded">Search</button>
             </form>
-            <ul id="search-history-list" class="grid grid-rows-10 gap-8 row-span-8 my-5"></ul>
+            <ul id="search-history-list" class="grid grid-rows-10 gap-8 row-span-8 my-5 pr-5"></ul>
         </menu>
-        <main class="grid col-span-2 grid-rows-2 mx-10">
-            <section id="current-weather-container" class="border-2 border-gray-600 my-10">
+        <main class="box-border grid col-span-2 grid-rows-5 mx-10 px-5">
+            <section id="current-weather-container" class="border-2 border-gray-600 my-10 row-span-2">
                 <article>
                     <div id="city-date-icon" class="box-border h-12 max-w-20px"></div>
                     <div id="temp-div" class="box-border h-12 max-w-20px"></div>
@@ -30,31 +30,31 @@
                     <div id="uv-index-div" class="box-border h-12 max-w-20px"></div>
                 </article>
             </section>
-            <section id="forecasted-weather-container" class="grid grid-rows-2">
-                <h3 class="font-semibold text-3xl">5-Day-Forecast</h3>
+            <section id="forecasted-weather-container" class="grid grid-rows-5 row-span-3">
+                <h3 class="font-semibold text-3xl rows-span-1 h-30px">5-Day-Forecast</h3>
                 
-                <div id="forc-grid" class="grid grid-rows-2 grid-cols-3 gap-6 justify-around align-middle sm:grid sm:grid-cols-5 sm:grid-rows-1 sm:gap-8 sm:justify-around">
-                    <div id="day-1" class="bg-blue-900 col-span-3 sm:col-span-1">
+                <div id="forc-grid" class="grid row-span-4 grid-rows-5 grid-cols-3 gap-6 justify-around align-middle lg:grid lg:grid-cols-5 lg:grid-rows-1 lg:gap-8 lg:justify-around">
+                    <div id="day-1" class="bg-blue-900 col-span-3 lg:col-span-1">
                         <div id="forc-date-1"></div>
                         <div id="forc-icon-1"></div>
                         <ul id="forc-data-1"></ul>
                     </div>
-                    <div id="day-2" class="bg-blue-900 col-span-3 sm:col-span-1">
+                    <div id="day-2" class="bg-blue-900 col-span-3 lg:col-span-1">
                         <div id="forc-date2"></div>
                         <div id="forc-icon-2"></div>
                         <ul id="forc-data-2"></ul>
                     </div>
-                    <div id="day-3" class="bg-blue-900 col-span-3 sm:col-span-1">
+                    <div id="day-3" class="bg-blue-900 col-span-3 lg:col-span-1">
                         <div id="forc-date-3"></div>
                         <div id="forc-icon-3"></div>
                         <ul id="forc-data-3"></ul>
                     </div>
-                    <div id="day-4" class="bg-blue-900 col-span-3 sm:col-span-1">
+                    <div id="day-4" class="bg-blue-900 col-span-3 lg:col-span-1">
                         <div id="forc-date-4"></div>
                         <div id="forc-icon-4"></div>
                         <ul id="forc-data-4"></ul>
                     </div>
-                    <div id="day-5" class="bg-blue-900 col-span-3 sm:col-span-1">
+                    <div id="day-5" class="bg-blue-900 col-span-3 lg:col-span-1">
                         <div id="forc-date-5"></div>
                         <div id="forc-icon-5"></div>
                         <ul id="forc-data-5"></ul>
