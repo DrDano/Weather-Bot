@@ -5,11 +5,11 @@ var date = new Date().toLocaleDateString('en-US', {
     month: 'numeric',
     year: 'numeric'
 });
-var historyList = document.querySelector("#search-history-list")
-var newDiv = document.createElement("a")
 
 var formSubmitHandler = function(event) {
     event.preventDefault();
+    var historyList = document.querySelector("#search-history-list")
+    var newDiv = document.createElement("div")
 
     var location = locationInput.value.trim();
     // © OpenStreetMap contributors
@@ -148,15 +148,14 @@ var formSubmitHandler = function(event) {
   }
 
   var getHistory = function(city) {
-
+    var historyList = document.querySelector("#search-history-list")
     
       if (localStorage.key(0)) {
           for (let i = 0; i < localStorage.length; i++) {
+              var newDiv = document.createElement("div")
               newDiv.textContent = localStorage.getItem(localStorage.key(i))
               historyList.appendChild(newDiv);
           }
-      } else {
-
       }
   }
 
