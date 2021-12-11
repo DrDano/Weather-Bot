@@ -6,6 +6,7 @@ var date = new Date().toLocaleDateString('en-US', {
     year: 'numeric'
 });
 var historyList = document.querySelector("#search-history-list");
+var cityName
 
 var formSubmitHandler = function(event) {
     event.preventDefault();
@@ -13,6 +14,7 @@ var formSubmitHandler = function(event) {
     var newDiv = document.createElement("div")
 
     var location = locationInput.value.trim();
+    cityName = location
     // © OpenStreetMap contributors
     var cityURL = `https://forward-reverse-geocoding.p.rapidapi.com/v1/search?q=${location}&accept-language=en&polygon_threshold=0.0`
     if (location) {
@@ -83,7 +85,7 @@ var formSubmitHandler = function(event) {
     var iconCode = weatherData.current.weather[0].icon
     var iconAddress = `http://openweathermap.org/img/wn/${iconCode}@2x.png`
 
-    var cityDateIconString = `<h3 id="city-date-icon" class="grid grid-rows-1">${locationInput.value} (${date})<img src="${iconAddress}" class="object-scale-down"></img></h3>`;
+    var cityDateIconString = `<h3 id="city-date-icon" class="grid grid-rows-1">${cityName} (${date})<img src="${iconAddress}" class="object-scale-down"></img></h3>`;
 
     container.innerHTML = cityDateIconString;
     tempContainer.textContent = "Temp: " + weatherData.current.temp + "F"
@@ -165,7 +167,7 @@ var formSubmitHandler = function(event) {
   var historyListClickHandler = function(event) {
       var city = event.target;
       var cityURL = `https://forward-reverse-geocoding.p.rapidapi.com/v1/search?q=${city.innerText}&accept-language=en&polygon_threshold=0.0`
-      console.log(city.innerText)
+      cityName = event.target.innerText;
       getLatLong(cityURL);
   }
 

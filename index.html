@@ -13,7 +13,7 @@
 </header>
 <body class="box-border font-sans bg-pink-100">
     <div class="grid grid-cols-1 sm:grid-cols-2 grid-rows-1 content-start">
-        <menu class="box-border grid grid-rows-10 row-span-5 justify-start content-start mx-auto">
+        <menu class="box-border grid grid-rows-10 row-span-1 justify-start content-start mx-auto">
             <form action="submit" id="location-form" class="row-span-1 max-h-10">
                 <input type="text" placeholder="Phoenix" id="location-input">
                 <button type="submit" class="bg-purple-300 text-white hover:bg-gray-300 rounded">Search</button>
@@ -22,8 +22,8 @@
         </menu>
         <main class="grid row-span-1 col-span-1 content-start mx-auto">
             <section id="current-weather-container" class="border-2 border-gray-600 my-10 row-span-1">
-                <article>
-                    <div id="city-date-icon" class="box-border h-12 max-w-20px"></div>
+                <article class="grid grid-cols-2 grid-flow-col grid-rows-2">
+                    <div id="city-date-icon" class="box-border"></div>
                     <div id="temp-div" class="box-border h-12 max-w-20px"></div>
                     <div id="wind-div" class="box-border h-12 max-w-20px"></div>
                     <div id="humidity-div" class="box-border h-12 max-w-20px"></div>
