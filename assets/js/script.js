@@ -5,10 +5,11 @@ var date = new Date().toLocaleDateString('en-US', {
     month: 'numeric',
     year: 'numeric'
 });
+var historyList = document.querySelector("#search-history-list");
 
 var formSubmitHandler = function(event) {
     event.preventDefault();
-    var historyList = document.querySelector("#search-history-list")
+    
     var newDiv = document.createElement("div")
 
     var location = locationInput.value.trim();
@@ -45,7 +46,7 @@ var formSubmitHandler = function(event) {
       }
     })
     .catch(function(error) {
-      alert("Unable to connect to Geocoding API");
+      alert("Invalid city name");
     });
   }
 
@@ -68,7 +69,7 @@ var formSubmitHandler = function(event) {
           }
       })
       .catch(function(error) {
-          console.log("Unable to connect with weather server")
+          console.log("Invalid coordinates transmitted from server")
       });
   }
 
@@ -148,7 +149,7 @@ var formSubmitHandler = function(event) {
   }
 
   var getHistory = function(city) {
-    var historyList = document.querySelector("#search-history-list")
+    
     
       if (localStorage.key(0)) {
           for (let i = 0; i < localStorage.length; i++) {
@@ -159,5 +160,13 @@ var formSubmitHandler = function(event) {
       }
   }
 
+  var historyListClickHandler = function(event) {
+      var city = event.target;
+      var cityURL = `https://forward-reverse-geocoding.p.rapidapi.com/v1/search?q=${city.innerText}&accept-language=en&polygon_threshold=0.0`
+      console.log(city.innerText)
+      getLatLong(cityURL);
+  }
+
   getHistory();
   locationForm.addEventListener("submit", formSubmitHandler);
+  historyList.addEventListener("click", historyListClickHandler);
