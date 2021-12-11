@@ -86,10 +86,10 @@ var formSubmitHandler = function(event) {
     var cityDateIconString = `<h3 id="city-date-icon" class="grid grid-rows-1">${locationInput.value} (${date})<img src="${iconAddress}" class="object-scale-down"></img></h3>`;
 
     container.innerHTML = cityDateIconString;
-    tempContainer.textContent = weatherData.current.temp + "F"
-    windContainer.textContent = weatherData.current.wind_speed + "mph"
-    humidityContainer.textContent = weatherData.current.humidity + "%"
-    uvIndexContainer.textContent = weatherData.current.uvi
+    tempContainer.textContent = "Temp: " + weatherData.current.temp + "F"
+    windContainer.textContent = "Wind-speed: " + weatherData.current.wind_speed + "mph"
+    humidityContainer.textContent = "Humidity: " + weatherData.current.humidity + "%"
+    uvIndexContainer.textContent = "UV Index: " + weatherData.current.uvi
 
     if (weatherData.current.uvi < 3) {
         uvIndexContainer.className = "bg-green-400 box-border h-12 max-w-20px"
@@ -124,7 +124,7 @@ var formSubmitHandler = function(event) {
 
           var IconString = `<div id="forc-icon-${i}"><img src="${iconAddress}" class="object-scale-down"></img></div>`;
 
-          var dataArr = [forcDate, iconAddress, humidity, wind, temp];
+          var dataArr = [forcDate, iconAddress, humidity+"%", wind+"mph", temp+"F"];
           var dataStrArr = ["Date: ","icon","Humidity: ", "Wind: ", "Temp: "];
 
         //   This first loop fills all 5 forecast elements with the date and icon
