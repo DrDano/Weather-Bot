@@ -13,15 +13,15 @@
 </header>
 <body class="box-border font-sans bg-pink-100">
     <div class="grid grid-cols-3">
-        <menu class="">
-            <form action="submit" id="location-form">
+        <menu class="grid grid-rows-10">
+            <form action="submit" id="location-form" class="row-span-2">
                 <input type="text" placeholder="Phoenix" id="location-input">
                 <button type="submit" class="bg-purple-300 text-white hover:bg-gray-300 rounded">Search</button>
             </form>
-            <ul id="search-history-list"></ul>
+            <ul id="search-history-list" class="grid grid-rows-10 gap-8 row-span-8 my-5"></ul>
         </menu>
         <main class="grid col-span-2 grid-rows-2 mx-10">
-            <section id="current-weather-container" class="border-2 border-gray-600 my-5">
+            <section id="current-weather-container" class="border-2 border-gray-600 my-10">
                 <article>
                     <div id="city-date-icon" class="box-border h-12 max-w-20px"></div>
                     <div id="temp-div" class="box-border h-12 max-w-20px"></div>

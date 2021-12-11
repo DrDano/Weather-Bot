@@ -152,8 +152,9 @@ var formSubmitHandler = function(event) {
     
     
       if (localStorage.key(0)) {
-          for (let i = 0; i < localStorage.length; i++) {
+          for (let i = 0; i < 10; i++) {
               var newDiv = document.createElement("div")
+              newDiv.className = "w-full h-12 bg-gray-300 text-center"
               newDiv.textContent = localStorage.getItem(localStorage.key(i))
               historyList.appendChild(newDiv);
           }
