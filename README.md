@@ -2,6 +2,17 @@
 
 Your one-stop-shop weather dashboard
 
+# About the Product
+This weather dashboard presents both current weather and forecasted weather retrieved from the OpenWeather API. The dashboard is pleasing to the eye and works just as well on mobile platforms as it does on larger screens. This is because it was built with Tailwind CSS, which is a mobile-first CSS framework. As you enter cities into the search bar, each city is saved to its own button below the form, and is clickable so you can easily look at your weather history.
+
+## Application Working Example
+![Working Example gif]()
+
+
+## Link to Deployment
+[Click here to go to my working application]()
+
+
 # Credits:
 
 - © OpenStreetMap contributors
