@@ -64,7 +64,6 @@ var getWeatherData = function (coordinates) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data);
           displayWeather(data);
           displayForecast(data);
         });
@@ -140,6 +139,7 @@ var displayForecast = function (weatherData) {
     //   This first loop fills all 5 forecast elements with the date and icon
     var dayChildren = dayEl.children;
     dayChildren[0].textContent = forcDate;
+    dayChildren[0].className = "font-light tracking-tight leading-relaxed text-gray-200 mx-1"
     dayChildren[1].innerHTML = IconString;
 
     function deleteChildNodes(parent) {
@@ -154,6 +154,7 @@ var displayForecast = function (weatherData) {
     for (let i = 4; i > 1; i--) {
       var newLi = document.createElement("li");
       newLi.textContent = `${dataStrArr[i]}${dataArr[i]}`;
+      newLi.className = "font-medium tracking-tight leading-relaxed text-gray-200 mx-3"
       dayChildren[2].appendChild(newLi);
     }
   }
@@ -163,7 +164,7 @@ var getHistory = function (city) {
   if (localStorage.key(0)) {
     for (let i = 0; i < 10; i++) {
       var newDiv = document.createElement("div");
-      newDiv.className = "w-full h-12 bg-gray-300 text-center";
+      newDiv.className = "w-full h-12 bg-gray-300 text-center align-middle";
       newDiv.textContent = localStorage.getItem(localStorage.key(i));
       historyList.appendChild(newDiv);
     }
