@@ -18,6 +18,7 @@ var formSubmitHandler = function(event) {
     if (location) {
       localStorage.setItem(`${location}`, location);
       newDiv.textContent = locationInput.value
+      newDiv.className = "w-full h-12 bg-gray-300 text-center"
       historyList.appendChild(newDiv);
       getLatLong(cityURL);
 
